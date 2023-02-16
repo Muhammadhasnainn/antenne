@@ -67,6 +67,9 @@ const GMap = ({
   setLocation,
   setAddress,
   address,
+  setLocation1,
+  setLocation2,
+  setLocation3,
 }) => {
   const [newPolygons, setNewPolygons] = useState([]);
   const [newPolygons2, setNewPolygons3] = useState([]);
@@ -257,6 +260,11 @@ const GMap = ({
       Math.round(area(polly3 ? polly3 : arr2)) +
       Math.round(area(polly4 ? polly4 : arr3));
 
+
+      setLocation1(polly2 ? polly2 : arr)
+      setLocation2(polly3 ? polly3 : arr2)
+      setLocation3(polly4 ? polly4 : arr3)
+      
     if (Math.round(totalarea) > 10000) {
       setWarning(true);
     }

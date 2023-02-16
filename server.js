@@ -2,26 +2,11 @@ import express from "express";
 import cors from "cors";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
-import path from "path";
-import { fileURLToPath } from "url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const PORT = process.env.PORT || 8800;
 
 const app = express();
 dotenv.config();
 app.use(cors());
 app.use(express.json());
-
-app.use(express.static(path.join(__dirname, "./client/build")));
-app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"), {
-    function(err) {
-      res.status(500).send(err);
-    },
-  });
-});
 
 var transporter = nodemailer.createTransport({
   service: "gmail",
@@ -59,7 +44,10 @@ app.post("/contact", async (req, res) => {
 });
 
 app.post("/senddata", async (req, res) => {
-  const { userEmail, name, phone, area } = req.body;
+  const { userEmail, name, phone, area, location1, location2, location3 } =
+    req.body;
+
+console.log(location3.length);
 
   await transporter.sendMail({
     from: "themohdhasnain@gmail.com",
@@ -67,9 +55,9 @@ app.post("/senddata", async (req, res) => {
     subject: "Contact Antenne5g",
     text: `Dear ${name},
 
-thank you for contacting Antenne5g and relying on our innovative solutions for the installation of a new 5g towers at no cost.
-    
-Within a week, you will be contacted by one of our specialists who will be able to provide you with all the answers to your questions.`,
+  thank you for contacting Antenne5g and relying on our innovative solutions for the installation of a new 5g towers at no cost.
+
+  Within a week, you will be contacted by one of our specialists who will be able to provide you with all the answers to your questions.`,
   });
 
   await transporter.sendMail({
@@ -77,10 +65,28 @@ Within a week, you will be contacted by one of our specialists who will be able 
     to: "antenne5gitalia@gmail.com",
     subject: "Contact",
     text: `
-    Name: ${name}
-    Phone: ${phone}
-    Area: ${area}
-    `,
+      Name: ${name}
+      Phone: ${phone}
+      Total Area: ${area}
+      ${location2.length > 0 ? "Location 1" : "Location"}: ${location1.map((elem) => {
+      return JSON.stringify(elem);
+    })}
+
+    ${
+      location2.length > 0 !== undefined ?
+      `Location 2 : ${location2.map((elem) => {
+        return JSON.stringify(elem);
+      })}`
+      : ""
+    }
+    ${
+      location3.length > 0 ?
+      `Location 3 : ${location3.map((elem) => {
+        return JSON.stringify(elem);
+      })}`
+      : ""
+    }
+      `,
   });
 
   res.status(201).send("Successfull");

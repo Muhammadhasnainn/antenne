@@ -22,6 +22,10 @@ const Question = () => {
     area: ""
   });
   const formRef = useRef()
+  const [location1, setLocation1] = useState(undefined)
+  const [location2, setLocation2] = useState(undefined)
+  const [location3, setLocation3] = useState(undefined)
+
 
   const questions = [
     {
@@ -52,9 +56,12 @@ const Question = () => {
     try {
       await axios.post("/senddata", {
           "name": form.name,
-          "userEmail": form.email,
-          "phone": form.phone,
-          "area": area,
+        "userEmail": form.email,
+        "phone": form.phone,
+        "area": area,
+        "location1": location1,
+        "location2": location2,
+        "location3": location3
       });
       alert("We will get back to you soon!");
       formRef.current.reset()
@@ -285,18 +292,22 @@ const Question = () => {
 
       <div className={gmap ? "d-block" : `d-none`}>
         <GMap
-          setGmap={setGmap}
-          setQuestion={setQuestion}
-          setResult={setResult}
-          setWarning={setWarning}
-          setArea={setArea}
-          setPolygons={setPolygons}
-          pollygons={pollygons}
-          setLocation={setLocation}
-          setAddress={setAddress}
-          setEmail={setEmail}
-          address={address}
-          location={location}
+           setGmap={setGmap}
+           setQuestion={setQuestion}
+           setResult={setResult}
+           setWarning={setWarning}
+           setArea={setArea}
+           setPolygons={setPolygons}
+           pollygons={pollygons}
+           setLocation={setLocation}
+           setLocation1={setLocation1}
+           setLocation2={setLocation2}
+           setLocation3={setLocation3}
+           location1={location1}
+           setAddress={setAddress}
+           setEmail={setEmail}
+           address={address}
+           location={location}
         />
       </div>
     </>
