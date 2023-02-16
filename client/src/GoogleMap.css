@@ -1,0 +1,130 @@
+.google-map{
+  height: 100vh;
+  width: 100%;
+}
+
+.switch-mode {
+  position: absolute;
+  top: 5%;
+  z-index: 1;
+  width: 200px !important;
+  padding: 4px 0px;
+  color: white;
+  z-index: 200;
+}
+
+.google-map .background {
+  position: absolute;
+  top: 5% !important;
+  background: black;
+  opacity: 0.5;
+  width: 200px !important;
+  height: 75px;
+  padding: 4px 0px;
+  z-index: 199;
+  border-radius: 5px;
+}
+
+.switch-mode p {
+  font-size: 1.1rem;
+  z-index: 1;
+}
+
+.switch-mode .form-switch .form-check-input {
+  height: 18px;
+  width: 36px;
+}
+
+.switch-address {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  z-index: 200;
+  width: 600px;
+}
+
+.google-map .dropdown_btn {
+  background: white;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  width: 150px;
+  font-size: 1.1rem;
+  padding: 5px 0px;
+  margin-top: 10px;
+  box-shadow: 0px 0px 4px 2px rgba(0 0 0.1 /10%);
+}
+
+.google-map .dropdown_btn::after {
+  display: none;
+}
+
+.google-map .dropdown-menu {
+  padding: 5px 10px;
+}
+
+.google-map .address-dropdown {
+  padding: 5px;
+  width: 100%;
+}
+
+.address-dropdown input {
+  outline: none;
+  border: none;
+  width: 130%;
+  font-size: 1.05rem;
+  padding: 10px 15px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 6px 3px rgba(0 0 0.1 /10%);
+}
+
+.address-dropdown ul span {
+  font-size: 1.05rem !important;
+  font-weight: normal !important;
+}
+
+.google-map .seller-box {
+  background: white;
+  width: 180px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.google-map .seller-box p {
+  font-size: 1.05rem;
+}
+
+.star {
+  width: 18px;
+  margin-left: 1px;
+}
+
+.google-map .seller-box span {
+  font-size: 0.92rem;
+}
+
+.current-location {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  z-index: 1;
+  height: 50px;
+  cursor: pointer;
+  box-shadow: 0px 0px 9px 3px rgba(0 0 0.1 /10%);
+  border-radius: 50%;
+}
+
+[data-reach-combobox-popover] {
+  top: 15% !important;
+}
+
+[data-suggested-value] {
+  font-weight: normal !important;
+}
+
+.bottom_btns {
+  position: absolute;
+  top: 90%;
+  left: calc(50% - 160px);
+  width: 320px;
+}
