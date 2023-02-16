@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.7cf3cea3.css",
+    "main.js": "/static/js/main.6ee023ea.js",
+    "static/media/mobile-network-cell-tower.jpg": "/static/media/mobile-network-cell-tower.05f0e54281fcf8cd7140.jpg",
+    "static/media/hero.jpg": "/static/media/hero.8c2a8e1107eb4a82ecd6.jpg",
+    "static/media/antenne 5g italia locazione.jpg": "/static/media/antenne 5g italia locazione.96115243ff1eb1e5c684.jpg",
+    "static/media/antenne 5g installazione.jpg": "/static/media/antenne 5g installazione.829d7998dfaec3a73edf.jpg",
+    "static/media/antenne 5g affittare spazio.jpg": "/static/media/antenne 5g affittare spazio.80d5ec842cbcbc516d3d.jpg",
+    "static/media/Antenne 5g italia.jpg": "/static/media/Antenne 5g italia.05b27da9f9ce5a0d2b28.jpg",
+    "static/media/Progetto-Gaif-Tower.webp": "/static/media/Progetto-Gaif-Tower.269c62714fdd2b01af87.webp",
+    "static/media/energy3.png": "/static/media/energy3.ed1e4ffb5debfb584b57.png",
+    "static/media/energy2.png": "/static/media/energy2.7a47acb371990200b080.png",
+    "static/media/energy1.png": "/static/media/energy1.38d9df7ea2dc345c248a.png",
+    "static/media/location.png": "/static/media/location.69683d8d3ce8e4cc2525.png",
+    "static/media/logo.png": "/static/media/logo.a17283c300892f223881.png",
+    "index.html": "/index.html",
+    "main.7cf3cea3.css.map": "/static/css/main.7cf3cea3.css.map",
+    "main.6ee023ea.js.map": "/static/js/main.6ee023ea.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7cf3cea3.css",
+    "static/js/main.6ee023ea.js"
+  ]
+}
