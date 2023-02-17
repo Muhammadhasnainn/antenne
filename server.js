@@ -63,17 +63,17 @@ app.post("/senddata", async (req, res) => {
   const { userEmail, name, phone, area, location1, location2, location3 } =
     req.body;
 
-console.log(location3.length);
+  console.log(location3.length);
 
   await transporter.sendMail({
     from: "themohdhasnain@gmail.com",
     to: userEmail,
     subject: "Contact Antenne5g",
-    text: `Dear ${name},
+    text: `Gentile ${name},
 
-  thank you for contacting Antenne5g and relying on our innovative solutions for the installation of a new 5g towers at no cost.
-
-  Within a week, you will be contacted by one of our specialists who will be able to provide you with all the answers to your questions.`,
+    grazie per aver contattato antenne5g.it .
+    Entro una settimana, verrai ricontattato da uno dei nostri specialisti in grado di fornirti tutte le risposte alle tue domande.
+    `,
   });
 
   await transporter.sendMail({
@@ -84,23 +84,25 @@ console.log(location3.length);
       Name: ${name}
       Phone: ${phone}
       Total Area: ${area}
-      ${location2.length > 0 ? "Location 1" : "Location"}: ${location1.map((elem) => {
-      return JSON.stringify(elem);
-    })}
+      ${location2.length > 0 ? "Location 1" : "Location"}: ${location1.map(
+      (elem) => {
+        return JSON.stringify(elem);
+      }
+    )}
 
     ${
-      location2.length > 0 !== undefined ?
-      `Location 2 : ${location2.map((elem) => {
-        return JSON.stringify(elem);
-      })}`
-      : ""
+      location2.length > 0 !== undefined
+        ? `Location 2 : ${location2.map((elem) => {
+            return JSON.stringify(elem);
+          })}`
+        : ""
     }
     ${
-      location3.length > 0 ?
-      `Location 3 : ${location3.map((elem) => {
-        return JSON.stringify(elem);
-      })}`
-      : ""
+      location3.length > 0
+        ? `Location 3 : ${location3.map((elem) => {
+            return JSON.stringify(elem);
+          })}`
+        : ""
     }
       `,
   });
@@ -108,6 +110,20 @@ console.log(location3.length);
   res.status(201).send("Successfull");
 });
 
-app.listen(PORT, () => {
+// app.post("/verification", async (req, res) => {
+//   const { token } = req.body;
+
+//   await axios.post(
+//     `https://www.google.com/recaptcha/api/siteverify?secret=${""}&response=${token}`
+//   );
+
+//   if (res.status(200)) {
+//     res.send(true);
+//   } else {
+//     res.send(false);
+//   }
+// });
+
+app.listen(8800, () => {
   console.log("Connected");
 });

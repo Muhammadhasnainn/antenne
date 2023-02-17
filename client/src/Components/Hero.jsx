@@ -1,11 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Navbar from "./Navbar";
 
 const Hero = () => {
   return (
     <div className="Hero mb-5">
-      <Navbar />
       <div className="d-flex flex-column justify-items-center heroMain">
         <div className="d-flex align-items-center canvas herofirst">
           <div className="content w-50 text-white">

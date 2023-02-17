@@ -549,7 +549,7 @@ footer p {
   .Questions .question {
     width: 95%;
   }
-  .answer {
+  #openMap {
     width: 85% !important;
   }
 }

@@ -1,4 +1,4 @@
-import React, { useState,useRef } from "react";
+import React, { useState, useRef } from "react";
 import GMap from "./Map";
 import { Link } from "react-router-dom";
 import { AiFillWarning } from "react-icons/ai";
@@ -15,29 +15,30 @@ const Question = () => {
   const [show, setShow] = useState(false);
   const [location, setLocation] = useState(0);
   const [address, setAddress] = useState("");
+  const [location1, setLocation1] = useState(undefined);
+  const [location2, setLocation2] = useState(undefined);
+  const [location3, setLocation3] = useState(undefined);
+const [loading, setLoading] = useState(false);
+
   const [form, setForm] = useState({
     name: "",
     email: "",
     phone: "",
-    area: ""
+    area: "",
   });
-  const formRef = useRef()
-  const [location1, setLocation1] = useState(undefined)
-  const [location2, setLocation2] = useState(undefined)
-  const [location3, setLocation3] = useState(undefined)
-
+  const formRef = useRef();
 
   const questions = [
     {
-      id: "01 Demonda",
-      qno: "hai la piena proprietà o sei tra i proprietari del terreno / fabbricato ?",
+      id: "01",
+      qno: "Hai la piena proprietà o sei tra i proprietari del terreno / fabbricato ?",
     },
     {
-      id: "02 Demonda",
+      id: "02",
       qno: "Il tuo terreno ha un accesso carrabile e libero da vincoli ambientali  ?",
     },
     {
-      id: "03 Demonda",
+      id: "03",
       qno: "Il tuo terreno/ fabbricato è entro i 1kM di distanza da un'area industriale o artigianale o commerciale, Centri abitati o entro i 300 m di distanza da autostrade??",
     },
     {
@@ -46,28 +47,32 @@ const Question = () => {
     },
   ];
 
-
   const handleChange = (e) => {
     setForm((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
-  
+
   const HandleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
+    setLoading(true)
     try {
       await axios.post("/senddata", {
-          "name": form.name,
-        "userEmail": form.email,
-        "phone": form.phone,
-        "area": area,
-        "location1": location1,
-        "location2": location2,
-        "location3": location3
+        name: form.name,
+        userEmail: form.email,
+        phone: form.phone,
+        area: area,
+        location1: location1,
+        location2: location2,
+        location3: location3,
       });
-      alert("We will get back to you soon!");
-      formRef.current.reset()
+      alert(
+        "“Abbiamo ricevuto la tua email, Per qualsiasi informazione o chiarimento non esitate a contattarci via mail a: info@antenne5g.it oppure telefonicamente al 800 987 789”!"
+      );
+      formRef.current.reset();
+      setLoading(false)
     } catch (err) {
       console.log(err);
-      alert("Please fill the form below!")
+      alert("Please fill the form below!");
+      setLoading(false)
     }
   };
 
@@ -84,7 +89,7 @@ const Question = () => {
                 <input
                   type={"text"}
                   id="name"
-                  onChange={(e)=> handleChange(e)}
+                  onChange={(e) => handleChange(e)}
                   placeholder="eg Cristiano"
                   className="form-control mt-2 border-0"
                 />
@@ -95,7 +100,7 @@ const Question = () => {
                   type={"email"}
                   placeholder="eg Cristiano"
                   id="email"
-                  onChange={(e)=> handleChange(e)}
+                  onChange={(e) => handleChange(e)}
                   className="form-control mt-2 border-0"
                 />
               </div>
@@ -105,7 +110,7 @@ const Question = () => {
                   type={"number"}
                   placeholder="Phone Number"
                   id="phone"
-                  onChange={(e)=> handleChange(e)}
+                  onChange={(e) => handleChange(e)}
                   className="form-control mt-2 border-0"
                 />
               </div>
@@ -124,9 +129,9 @@ const Question = () => {
               <button
                 className="bg_primary px-5 py-2 mx-auto d-block fs-5 
             text-white rounded mt-5 border-0"
-            onClick={HandleSubmit}
+                onClick={HandleSubmit}
               >
-                Invia i dati
+               {loading ? "loading" :  "Invia i dati"}
               </button>
 
               <p
@@ -137,6 +142,10 @@ const Question = () => {
               >
                 Torna indietro
               </p>
+
+            <Link to={"/"} className="d-block text-dark text-center mt-4">
+              Ritorna al sito antenne5g.it
+              </Link>
             </form>
           )}
           {!show && !result && !email
@@ -191,10 +200,11 @@ const Question = () => {
 
           {show && (
             <div className="text-center w-75">
-              <p className="fs-5">si procede con domanda {question + 1}</p>
+              {/* <p className="fs-5">si procede con domanda {question + 1}</p> */}
               <p className="mt-2">
-                no Ci dispiace, il tuo terreno non è idoneo all'installazione di
-                un antenna 5g.
+                {/* no  */}
+                Ci dispiace, il tuo terreno non è idoneo all'installazione di un
+                antenna 5g.
               </p>
               <Link to="/">Torna alla home</Link>
             </div>
@@ -264,6 +274,7 @@ const Question = () => {
                   <div className="mt-5">
                     <button
                       className="answer w-75 text-start px-3"
+                      id="openMap"
                       type="button"
                       onClick={() => setGmap(true)}
                     >
@@ -292,22 +303,22 @@ const Question = () => {
 
       <div className={gmap ? "d-block" : `d-none`}>
         <GMap
-           setGmap={setGmap}
-           setQuestion={setQuestion}
-           setResult={setResult}
-           setWarning={setWarning}
-           setArea={setArea}
-           setPolygons={setPolygons}
-           pollygons={pollygons}
-           setLocation={setLocation}
-           setLocation1={setLocation1}
-           setLocation2={setLocation2}
-           setLocation3={setLocation3}
-           location1={location1}
-           setAddress={setAddress}
-           setEmail={setEmail}
-           address={address}
-           location={location}
+          setGmap={setGmap}
+          setQuestion={setQuestion}
+          setResult={setResult}
+          setWarning={setWarning}
+          setArea={setArea}
+          setPolygons={setPolygons}
+          pollygons={pollygons}
+          setLocation={setLocation}
+          setLocation1={setLocation1}
+          setLocation2={setLocation2}
+          setLocation3={setLocation3}
+          location1={location1}
+          setAddress={setAddress}
+          setEmail={setEmail}
+          address={address}
+          location={location}
         />
       </div>
     </>
