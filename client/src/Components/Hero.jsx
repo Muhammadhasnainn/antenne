@@ -14,7 +14,7 @@ const Hero = () => {
             <p className="fs-5 mt-2">
              Contribuisci anche tu allo 
              sviluppo digitale del Paese, 
-             proponi i tuoi spazi immobiliari.
+             proponi i tuoi spazi immobiliari. Guadagna dalla locazione del tuo terreno inutilizzato.
             </p>
             <Link to="/questions" className="btn primary_btn px-3 mt-3 py-2">
               Scopri se il tuo terreno e` idoneo
